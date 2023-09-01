@@ -6,6 +6,8 @@
   --color-logo: #4d5ae5;
   --hover-color: #404bbf;
   --border: #e7e9fc;
+  --border-advantages: #8e8f99;
+  --button-social-hover: #31d0aa;
 }
 
 body {
@@ -95,6 +97,7 @@ img {
   font-weight: 500;
   padding: 24px 0;
   display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-contacts {
@@ -111,6 +114,7 @@ img {
   font-style: normal;
   padding: 24px 0;
   display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-link:hover,
@@ -118,6 +122,21 @@ img {
 .header-contact:hover,
 .header-contact:focus {
   color: var(--hover-color);
+}
+
+.header-link-item {
+  position: relative;
+}
+
+.header-link:hover::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--hover-color);
+  margin-top: 21px;
+  position: absolute;
 }
 
 /** Main **/
@@ -149,6 +168,15 @@ img {
 .section-hero {
   background-color: var(--second-text-color);
   padding: 188px 0;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/background-hero.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .hero-title {
@@ -176,6 +204,7 @@ img {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   min-width: 169px;
   height: 56px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -205,6 +234,20 @@ img {
 
 .advantages-item {
   width: calc((100% - 72px) / 4);
+}
+
+.advantages-item-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid var(--border-advantages);
+  background: var(--second-background-color);
+  margin-bottom: 8px;
+}
+
+.advantages-item-icon {
+  margin: 24px 0;
 }
 
 /** Section-team **/
@@ -237,6 +280,32 @@ img {
   text-align: center;
 }
 
+.team-card-social-buttons {
+  margin-top: 8px;
+  display: flex;
+  gap: 24px;
+}
+
+.team-card-social-button {
+  fill: var(--second-background-color);
+}
+
+.team-card-social-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-logo);
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card-social-background:hover,
+.team-card-social-background:focus {
+  background-color: var(--button-social-hover);
+}
+
 /** Section-portfolio **/
 
 .portfolio-cards {
@@ -254,12 +323,44 @@ img {
   width: calc((100% - 48px) / 3);
 }
 
+.portfolio-list-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-logo);
+  padding: 40px 32px;
+  color: var(--second-background-color);
+  overflow: auto;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .portfolio-card-text {
   display: flex;
   flex-direction: column;
   padding: 32px 16px;
   border: 1px solid var(--border);
   border-top: none;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .overlay,
+.portfolio-card:focus .overlay {
+  transform: translateY(0%);
+}
+
+.portfolio-card:focus,
+.portfolio-card:hover {
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
 /** Footer **/
@@ -267,6 +368,14 @@ img {
 .footer-background {
   background-color: var(--second-text-color);
   padding: 100px 0;
+}
+
+.container-footer {
+  display: flex;
+}
+
+.footer-section {
+  margin-right: 120px;
 }
 
 .footer-logo {
@@ -281,4 +390,10 @@ img {
 .footer-text {
   color: var(--second-background-color);
   width: 264px;
+}
+
+.footer-social-text {
+  font-weight: 500;
+  color: var(--primari-background-color);
+  margin-bottom: 16px;
 }
